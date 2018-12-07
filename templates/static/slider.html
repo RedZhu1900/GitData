@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap-slider.css">
+    <link rel="stylesheet" href="./css/bootstrap-switch.css">
+    <script type="text/javascript" src="./js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-slider.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-switch.js"></script>
+</head>
+<body>
+<div style="margin-left: 100px">
+    <label class="control-label" style="margin: 0 10px">即将过保时间：</label>
+    <input id="month" type="text"
+           data-slider-ticks="[90, 180, 270,360]"
+           data-slider-ticks-labels='["3个月", "6个月", "9个月","1年"]'
+           data-slider-min="90"
+           data-slider-max="360"
+           data-slider-step="90"
+           data-slider-value="360"
+           data-slider-tooltip="hide"/>
+</div>
+<!--<div id="switch" class="switch">-->
+<input type="checkbox" id="mySwitch" />
+<!--</div>-->
+<div>
+
+</div>
+</body>
+<script>
+    var monthSlider = $("#month").bootstrapSlider();
+    // var mounthChange = function () {
+    //     var ageArr = ageSlider.bootstrapSlider('getValue');
+    //     $('#ageValue').val(ageArr[0] + '岁' + '~' + ageArr[1] + '岁');
+    // };
+    // var ageSlider = $("#ageSlider").bootstrapSlider().on('change', ageChange);
+    // var mounthChange = function () {
+    // 	// body...
+    // };
+
+    var month = monthSlider.bootstrapSlider('getValue');
+    console.log(month);
+    $("#month").bootstrapSlider().on('change', function () {
+        var month1 = monthSlider.bootstrapSlider('getValue');
+        if (month1 == 360) {
+            month1 = 365;
+        }
+        console.log(month1);
+    });
+
+    // $('#switch input').bootstrapSwitch();
+
+
+    $('#mySwitch').bootstrapSwitch({
+        onText: "全行设备",
+        offText: "在线设备",
+        onColor: "success",
+        offColor: "info",
+        size: "small",
+        onSwitchChange: function (event, state) {
+            if (state == true) {
+                $(this).val("0");
+                console.log($(this).val())
+            } else {
+                $(this).val("1");
+                console.log($(this).val())
+
+            }
+        }
+    })
+
+
+</script>
+</html>
+
+
